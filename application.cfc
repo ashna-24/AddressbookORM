@@ -4,5 +4,8 @@
 	<cfset this.sessiontimeout ="#CreateTimeSpan(0,0,45,0)#">
     <cfset this.datasource="employee">
 	<cfset this.ormEnabled="true">
-	<cfset this.ormsettings={logsql="true"}>
+	<cfset this.ormsettings={logsql="true",
+							eventhandling="true",
+							dbcreate = "dropcreate",
+							cfclocation = ["components/create.cfc"]}>
 </cfcomponent>

@@ -25,7 +25,7 @@ function validatecreate(){
     var numbervalidate = validatenumber(number);
     var mobilevalidate = validatemobile(mobile);
 
-    if(selectvalidate && firstvalidate && lastvalidate && gendervalidate && datevalidate && filevalidate && addressvalidate && streetvalidate && cityvalidate && statevalidate && numbervalidate && mobilevalidate)
+    if(selectvalidate && firstvalidate && lastvalidate && gendervalidate && datevalidate && filevalidate && addressvalidate && streetvalidate && cityvalidate && statevalidate && numbervalidate  && mobilevalidate)
         return true;
     else
         return false;
@@ -160,7 +160,12 @@ function validatestate(state){
 }
 
 function validatenumber(number){
-    if(number.value==""){
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(number.value != mailformat){
+        errorValidate('email_error');
+        number.style.border="1px solid red";
+        return false;
+    }else if(number.value==""){
         errorValidate('phone_error'); 
         number.style.border="1px solid red"; 
         return false;
@@ -182,3 +187,132 @@ function validatemobile(mobile){
         return true;
     }
 }
+
+/* validateGmail(number){
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(email.value.match(mailformat)){
+        alert("Valid email address!");
+        document.createForm.createnumber.focus();
+        return true;
+    }else{
+        alert("You have entered an invalid email address!");
+        document.createForm.createnumber.focus();
+        return false;
+    }
+} */
+
+/* $(document).ready(function(){
+    $("#createForm").validate({
+        rules:{
+            select:{
+                required: true,
+            },
+            first:{
+                required: true,
+                minlength:3,
+                lettersonly: true
+            },
+            last:{
+                required: true,
+                minlength:1,
+                lettersonly: true
+            },
+            gender:{
+                required: true
+            },
+            date:{
+                required: true
+            },
+            file:{
+                required: true
+            },
+            address:{
+                required: true,
+                minlength:3
+            },
+            street:{
+                required: true,
+                minlength:3,
+            },
+            city:{
+                required: true,
+                minlength:1,
+                lettersonly: true
+            },
+            state:{
+                required: true,
+                minlength:1,
+                lettersonly: true
+            },
+            number:{
+                required: true,
+                email: true
+            },
+            mobile:{
+                required: true,
+                numericonly: true,
+                minlength: 10,
+                maxlength: 12
+            }
+        },
+        message:{
+            select:{
+                required:"Required*"
+            },
+            first:{
+                required: "Required*",
+                minlength:"Must contain atleast 3 characters",
+                lettersonly: "Invalid name"
+            },
+            last:{
+                required: "Required*",
+                minlength:"Must contain atleast 1 characters",
+                lettersonly:"Invalid name"
+            },
+            gender:{
+                required: "Required*"
+            },
+            date:{
+                required: "Required*"
+            },
+            file:{
+                required: "Required*"
+            },
+            address:{
+                required: "Required*",
+                minlength:"Must contain atleast 3 characters"
+            },
+            street:{
+                required: "Required*",
+                minlength:"Must contain atleast 3 characters"
+            },
+            city:{
+                required: "Required*",
+                minlength:"Must contain atleast 1 characters",
+                lettersonly:"Invalid name"
+            },
+            state:{
+                required:"Required*",
+                minlength:"Must contain atleast 1 characters",
+                lettersonly:"Invalid name"
+            },
+            number:{
+                required: "Required*",
+                email: "Enter a valid email"
+            },
+            mobile:{
+                required: "Required*",
+                numericonly: "Phone no. is invalid",
+                minlength: "Minimum 10 digits",
+                maxlength: "Maximum 12 digits"
+            }
+        }
+    });
+    jQuery.validator.addMethod('lettersonly',function(value,element){
+        return /^[^-\s][a-zA-Z_\s-]+$/.test(value);
+    });
+ 
+    jQuery.validator.addMethod('numericonly',function(value,element){
+        return /^[0-9]+$/.test(value);
+    });
+}); */

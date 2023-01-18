@@ -1,7 +1,8 @@
 <cfcomponent>
     <cffunction  name="getEditdata" access="remote" returnType="struct" returnFormat="json">
         <cfargument name="name" type="string" required="yes">
-        <cfquery name="editvalidate">
+        
+        <!---<cfquery name="editvalidate">
             SELECT * 
             FROM contactDtls
             WHERE FirstName = <cfqueryparam value="#arguments.name#" cfsqltype="cf_sql_varchar">
@@ -19,6 +20,6 @@
         <cfset local.editvaldt.State = editvalidate.State>
         <cfset local.editvaldt.Email = editvalidate.Email>
         <cfset local.editvaldt.MobileNumber = editvalidate.MobileNumber>
-        <cfreturn local.editvaldt>
+        <cfreturn local.editvaldt>--->
     </cffunction>
 </cfcomponent>
