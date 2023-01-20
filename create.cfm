@@ -15,7 +15,7 @@
                     <div class="createPersonal">
                         <p class="personal color">Personal Contact</p>
                         <div class="formData">
-                            <form action="" method="post" id="createForm" name="createForm" autocomplete="off" onsubmit="return validatecreate()">
+                            <form action="" method="post" id="createForm" name="createForm" autocomplete="off" enctype="multipart/form-data" onsubmit="return validatecreate()">
                                 <div class="row1 flex">
                                     <div class="psnlTop">
                                         <p class="psnlmsg color">Title*</p>
@@ -103,7 +103,6 @@
                                         <input type="hidden" name="createnumber_cfformrequired" value="You must enter a Email.">
                                         <input type="text" name="number" class="date" id="number" onblur="validatecreate()" value="" maxlength="20">
                                         <span id="phone_error" class="error">Required*</span>
-                                        <span id="email_error" class="error">Invalid email address!</span>
                                     </div>
                                     <div class="street">
                                         <p class="psnlmsg color">Mobile Number*</p>
@@ -117,8 +116,7 @@
                                 </div>
                             </form>
                             <cfif structKeyExists(form, 'create')> 
-                                <cfobject name="contcreate" component="components/createInsert">
-                                <cfinvoke method="getcontact" component="#contcreate#">
+                                <cfinvoke method="getcontact" component="components/createInsert">
                                 <cfset structClear(form)>
                             </cfif>
                         </div>

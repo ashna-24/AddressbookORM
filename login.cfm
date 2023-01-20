@@ -19,14 +19,15 @@
                         <form action="" method="post" name="myform" class="myform" onsubmit="return validatelogin()">
                             <input type="hidden" name="uname_cfformrequired" value="You must enter a Username.">
                             <input type="hidden" name="password_cfformrequired" value="You must enter a Password.">
-                            <input type="text" name="uname" class="text" placeholder="Username" id="uname" onblur="validateform()"><br>
+                            <input type="text" name="uname" class="text" placeholder="Username" id="uname" onblur="validatelogin"><br>
                             <span id="uname_error" class="error">Please fill this field!</span>
-                            <input type="password" name="password" class="text" placeholder="Password" id="pswd" onblur="validateform()"><br>
+                            <input type="password" name="password" class="text" placeholder="Password" id="pswd" onblur="validatelogin"><br>
                             <span id="pswd_error" class="error">Please fill this field!</span>
                             <input type="submit" value="LOGIN" name="login" class="submit color">
                         </form>
                         <cfif structKeyExists(form,'login')>
-                            <cfinvoke method="getlogin" component="components/login">
+                            <cfinvoke method="getlogin" component="components/login" returnVariable="result">
+                            <div class="invalid">#result#</div>
                             <cfset structClear(form)>
                         </cfif>
                         <p class="optional">Or Sign In Using</p>
@@ -41,7 +42,7 @@
                 </div>
             </div>
         </cfoutput>
-        <script src="js/login.js"></script>
+        <script src="js/loginAddbook.js"></script>
         <script src="aassets/googlesignin.js"></script>     
     </body>
 </html>

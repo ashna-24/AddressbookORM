@@ -52,26 +52,28 @@ function validateselect(select){
 }
 
 function validatefirst(first){
-    if(first.value==""){
-        errorValidate('first_error'); 
-        first.style.border="1px solid red"; 
-        return false;
-    }else{
+    var lettersonly = /^[A-Za-z]+$/;
+    if(first.value.match(lettersonly)){
         successValidate('first_error');
         first.style.border="1px solid white";
         return true;
+    }else{
+        errorValidate('first_error'); 
+        first.style.border="1px solid red"; 
+        return false;
     }
 }
 
 function validatelast(last){
-    if(last.value==""){
-        errorValidate('last_error'); 
-        last.style.border="1px solid red"; 
-        return false;
-    }else{
+    var lettersonly = /[A-Za-z]+$/;
+    if(last.value.match(lettersonly)){
         successValidate('last_error');
         last.style.border="1px solid white";
         return true;
+    }else{
+        errorValidate('last_error'); 
+        last.style.border="1px solid red"; 
+        return false;
     }
 }
 
@@ -136,55 +138,54 @@ function validatestreet(street){
 }
 
 function validatecity(city){
-    if(city.value==""){
-        errorValidate('city_error'); 
-        city.style.border="1px solid red"; 
-        return false;
-    }else{
+    var lettersonly = /^[A-Za-z]+$/;
+    if(city.value.match(lettersonly)){
         successValidate('city_error');
         city.style.border="1px solid white";
         return true;
+    }else{
+        errorValidate('city_error'); 
+        city.style.border="1px solid red"; 
+        return false;
     }
 }
 
 function validatestate(state){
-    if(state.value==""){
-        errorValidate('state_error'); 
-        state.style.border="1px solid red"; 
-        return false;
-    }else{
+    var lettersonly = /^[A-Za-z]+$/;
+    if(state.value.match(lettersonly)){
         successValidate('state_error');
         state.style.border="1px solid white";
         return true;
+    }else{
+        errorValidate('state_error'); 
+        state.style.border="1px solid red"; 
+        return false;
     }
 }
 
 function validatenumber(number){
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(number.value != mailformat){
-        errorValidate('email_error');
-        number.style.border="1px solid red";
-        return false;
-    }else if(number.value==""){
-        errorValidate('phone_error'); 
-        number.style.border="1px solid red"; 
-        return false;
-    }else{
+    if(number.value.match(mailformat)){
         successValidate('phone_error');
         number.style.border="1px solid white";
         return true;
+    }else{
+        errorValidate('phone_error'); 
+        number.style.border="1px solid red"; 
+        return false;
     }
 }
 
 function validatemobile(mobile){
-    if(mobile.value==""){
-        errorValidate('num_error'); 
-        mobile.style.border="1px solid red"; 
-        return false;
-    }else{
+    var phoneno = /^\d{10}$/;
+    if(mobile.value.match(phoneno)){
         successValidate('num_error');
         mobile.style.border="1px solid white";
         return true;
+    }else{
+        errorValidate('num_error'); 
+        mobile.style.border="1px solid red"; 
+        return false;
     }
 }
 
@@ -200,119 +201,3 @@ function validatemobile(mobile){
         return false;
     }
 } */
-
-/* $(document).ready(function(){
-    $("#createForm").validate({
-        rules:{
-            select:{
-                required: true,
-            },
-            first:{
-                required: true,
-                minlength:3,
-                lettersonly: true
-            },
-            last:{
-                required: true,
-                minlength:1,
-                lettersonly: true
-            },
-            gender:{
-                required: true
-            },
-            date:{
-                required: true
-            },
-            file:{
-                required: true
-            },
-            address:{
-                required: true,
-                minlength:3
-            },
-            street:{
-                required: true,
-                minlength:3,
-            },
-            city:{
-                required: true,
-                minlength:1,
-                lettersonly: true
-            },
-            state:{
-                required: true,
-                minlength:1,
-                lettersonly: true
-            },
-            number:{
-                required: true,
-                email: true
-            },
-            mobile:{
-                required: true,
-                numericonly: true,
-                minlength: 10,
-                maxlength: 12
-            }
-        },
-        message:{
-            select:{
-                required:"Required*"
-            },
-            first:{
-                required: "Required*",
-                minlength:"Must contain atleast 3 characters",
-                lettersonly: "Invalid name"
-            },
-            last:{
-                required: "Required*",
-                minlength:"Must contain atleast 1 characters",
-                lettersonly:"Invalid name"
-            },
-            gender:{
-                required: "Required*"
-            },
-            date:{
-                required: "Required*"
-            },
-            file:{
-                required: "Required*"
-            },
-            address:{
-                required: "Required*",
-                minlength:"Must contain atleast 3 characters"
-            },
-            street:{
-                required: "Required*",
-                minlength:"Must contain atleast 3 characters"
-            },
-            city:{
-                required: "Required*",
-                minlength:"Must contain atleast 1 characters",
-                lettersonly:"Invalid name"
-            },
-            state:{
-                required:"Required*",
-                minlength:"Must contain atleast 1 characters",
-                lettersonly:"Invalid name"
-            },
-            number:{
-                required: "Required*",
-                email: "Enter a valid email"
-            },
-            mobile:{
-                required: "Required*",
-                numericonly: "Phone no. is invalid",
-                minlength: "Minimum 10 digits",
-                maxlength: "Maximum 12 digits"
-            }
-        }
-    });
-    jQuery.validator.addMethod('lettersonly',function(value,element){
-        return /^[^-\s][a-zA-Z_\s-]+$/.test(value);
-    });
- 
-    jQuery.validator.addMethod('numericonly',function(value,element){
-        return /^[0-9]+$/.test(value);
-    });
-}); */

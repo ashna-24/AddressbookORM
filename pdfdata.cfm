@@ -10,7 +10,7 @@
         <body class="pdf">
             <cfoutput>
                 <h3 class="pdfdtl">Detailed List</h3>
-                <cfinvoke method="getinsert" component="components/register" returnVariable="tableQuery">
+                <cfinvoke method="getinsert" component="components/register" returnVariable="createDtls">
                 <table class="pdftable">
                     <tr class="pdftr">
                         <th></th>
@@ -18,13 +18,13 @@
                         <th class="pdflist">Email ID</th>
                         <th class="pdflist">Phone Number</th>
                     </tr>
-                    <cfloop query="tableQuery">
+                    <cfloop array="#createDtls#" index="createDtls">
                         <tr class="pdftr">
-                            <cfset local.userImg=tableQuery.Gender>
+                            <cfset local.userImg=createDtls.getGender()>
                             <td><img src="aassets/#local.userImg#.png" class="userImg display"></td>
-                            <td class="pdftd">#tableQuery.FirstName# #tableQuery.LastName#</td>
-                            <td class="pdftd">#tableQuery.Email#</td>
-                            <td class="pdftd">#tableQuery.MobileNumber#</td>
+                            <td class="pdftd">#createDtls.getFirstName()# #createDtls.getLastName()#</td>
+                            <td class="pdftd">#createDtls.getEmail()#</td>
+                            <td class="pdftd">#createDtls.getMobileNumber()#</td>
                         </tr>
                     </cfloop>
                 </table>

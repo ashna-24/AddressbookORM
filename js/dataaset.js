@@ -19,6 +19,10 @@ function viewData(message){
             $('#viewste').html(obj.STATE);
             $('#viewmail').html(obj.EMAIL);
             $('#viewnum').html(obj.MOBILENUMBER);
+            var imgprofile = document.createElement('img');
+            imgprofile.src="aassets/uploadedfile/"+obj.FILEUPLOAD;
+            imgprofile.className="setclass";
+            $('#viewimg').append(imgprofile);
         }
     });
 }

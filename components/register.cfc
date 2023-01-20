@@ -6,4 +6,10 @@
         </cfquery>
         <cfreturn userRegister>
     </cffunction>
+
+    <cffunction  name="getinsert" access="remote" returnType="array">
+        <cfset ORMReload()>
+        <cfset tableQuery= entityLoad('createDtls')>
+        <cfreturn tableQuery>
+    </cffunction>
 </cfcomponent>

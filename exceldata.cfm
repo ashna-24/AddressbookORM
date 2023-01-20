@@ -9,18 +9,18 @@
     </head>
     <body>
         <cfoutput>
-            <cfinvoke method="getinsert" component="components/register" returnVariable="tableQuery">
+            <cfinvoke method="getinsert" component="components/register" returnVariable="createDtls">
             <table cellpadding="1" cellspacing="1" border="1">
                 <tr>
                     <th>Name</th>
                     <th>Email ID</th>
                     <th>Phone Number</th>
                 </tr>
-                <cfloop query="tableQuery">
+                <cfloop array="#createDtls#" index="createDtls">
                     <tr>
-                        <td>#tableQuery.FirstName# #tableQuery.LastName#</td>
-                        <td>#tableQuery.Email#</td>
-                        <td>#tableQuery.MobileNumber#</td>
+                        <td>#createDtls.getFirstName()# #createDtls.getLastName()#</td>
+                        <td>#createDtls.getEmail()#</td>
+                        <td>#createDtls.getMobileNumber()#</td>
                     </tr>
                 </cfloop>
             </table>

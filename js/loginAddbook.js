@@ -24,10 +24,6 @@ function validateuname(uname){
         errorValidate('uname_error');
         uname.style.border="1px solid red";  
         return false;
-    }else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(uname)){
-        errorValidate('uname_error');
-        uname.style.border="1px solid red"; 
-        return true;
     }
     else{
         successValidate('uname_error');

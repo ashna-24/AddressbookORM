@@ -48,7 +48,7 @@
                         </div>
                         <div class="contentList">
                             <div class="listdtls">
-                                <!--- <cfinvoke  method="getinsert" component="components/register" returnVariable="tableQuery"> --->
+                                <cfinvoke  method="getinsert" component="components/register" returnVariable="createDtls">
                                 <table class="conttable">
                                     <tr class="conttr color">
                                         <th class="contth"></th>
@@ -59,59 +59,40 @@
                                         <th class="contth"></th>
                                         <th class="contth"></th>
                                     </tr>
-                                    <!--- <cfloop query="tableQuery"> --->
-                                        <!--- <cfset local.userImg=tableQuery.Gender> --->
+                                    <cfloop array="#createDtls#" index="createDtls">
                                         <tr class="conttr">
                                             <td class="conttd">
-                                                <!--- <img src="aassets/#local.userImg#.png" class="userImg"> --->
+                                                <cfset local.setimage = createDtls.getFileUpload()>
+                                                <img src="aassets\uploadedfile\#local.setimage#" name="myImage" class="userImg">
                                             </td>
-                                            <td class="conttd"><!--- >#tableQuery.FirstName# #tableQuery.LastName# ---></td>
-                                            <td class="conttd"><!--- ">#tableQuery.Email# ---></td>
-                                            <td class="conttd"><!--- #tableQuery.MobileNumber# ---></td>
+                                            <td class="conttd">#createDtls.getFirstName()# #createDtls.getLastName()#</td>
+                                            <td class="conttd">#createDtls.getEmail()#</td>
+                                            <td class="conttd">#createDtls.getMobileNumber()#</td>
                                             <td class="conttd">
-                                                <!--- <cfset session.fname = tableQuery.FirstName> --->
-                                                <button class="edit" type="submit" onclick="document.getElementById('edit').style.display='block'; editData(<!--- '#session.fname#' --->)">
+                                                <button class="edit" type="submit" onclick="document.getElementById('edit').style.display='block'; editData('#createDtls.getID()#')">
                                                     Edit
                                                 </button>
                                                 <div id="edit" class="w3-modal">
-                                                    <div class="w3-content w3-container w3-card" style="width: 700px; display:flex;">
-                                                        <span onclick="document.getElementById('edit').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                                                        <div class="w3-container" style="background-color:skyblue; display:flex;">
-                                                            <cfinclude  template="edit.cfm">
-                                                            <div class="imgwidth">
-                                                                <img src="aassets/user.png" alt="Not found" class="edtviwimg">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <cfinclude  template="edit.cfm">
                                                 </div>
                                             </td>
                                             <td class="conttd">
-                                                <!--- <a href="components/delete.cfc?method=deletepage&name=#tableQuery.FirstName#"> --->
+                                                <a href="components/delete.cfc?method=deletepage&name=#createDtls.getID()#">
                                                     <button class="edit" type="submit">
                                                         Delete
                                                     </button>
-                                               <!---  </a> --->
+                                                </a>
                                             </td>
                                             <td class="conttd">
-                                                <!--- <cfset session.dataview=tableQuery.FirstName> --->
-                                                <button class="edit" type="submit" id="viewSubmit" onclick="document.getElementById('view').style.display='block'; viewData(<!--- '#session.dataview#' --->)">
+                                                <button class="edit" type="submit" id="viewSubmit" onclick="document.getElementById('view').style.display='block'; viewData('#createDtls.getID()#')">
                                                     View
                                                 </button>
                                                 <div id="view" class="w3-modal">
-                                                    <div class="w3-content w3-container w3-card" style="width: 700px; display:flex;">
-                                                        <span onclick="document.getElementById('view').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                                                        <div class="w3-container" style="background-color:skyblue; display:flex;">
-                                                            <cfinclude template="view.cfm">
-                                                            <div class="imgwidth">
-                                                                <!--- <cfset local.userImg=tableQuery.Gender> --->
-                                                                <img src="aassets/user.png" alt="Not found" class="edtviwimg">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <cfinclude template="view.cfm">
                                                 </div>
                                             </td>
                                         </tr>
-                                    <!--- </cfloop> --->
+                                    </cfloop>
                                 </table>
                             </div>
                         </div>
@@ -119,7 +100,7 @@
                 </div>
                 <div id="print">
                     <h3 class="printdtl">Detailed List</h3>
-                    <!--- <cfinvoke method="getinsert" component="components/register" returnVariable="tableQuery"> --->
+                    <cfinvoke method="getinsert" component="components/register" returnVariable="createDtls">
                     <table class="printtable">
                         <tr class="printtr">
                             <th></th>
@@ -127,15 +108,15 @@
                             <th class="printlist">Email ID</th>
                             <th class="printlist">Phone Number</th>
                         </tr>
-                        <!--- <cfloop query="tableQuery"> --->
+                        <cfloop array="#createDtls#" index="createDtls">
                             <tr class="printtr">
-                                <!--- <cfset local.userImg=tableQuery.Gender> --->
-                                <td><!--- <img src="aassets/#local.userImg#.png" class="userImg display"> ---></td>
-                                <td class="printtd"><!--- #tableQuery.FirstName# #tableQuery.LastName# ---></td>
-                                <td class="printtd"><!--- #tableQuery.Email# ---></td>
-                                <td class="printtd"><!--- #tableQuery.MobileNumber# ---></td>
+                                <cfset local.userImg=createDtls.getGender()>
+                                <td><img src="aassets/#local.userImg#.png" class="userImg display"></td>
+                                <td class="printtd">#createDtls.getFirstName()# #createDtls.getLastName()#</td>
+                                <td class="printtd">#createDtls.getEmail()#</td>
+                                <td class="printtd">#createDtls.getMobileNumber()#</td>
                             </tr>
-                        <!--- </cfloop> --->
+                        </cfloop>
                     </table>
                 </div>
             <cfelse>
@@ -144,9 +125,8 @@
         </cfoutput>
         <script src="aassets/jquery.js"></script>
         <script src="aassets/jquery.min.js"></script>
-        <script src="js/view.js"></script>
-        <script src="js/edit.js"></script>
-        <script src="js/createcontact.js"></script>
+        <script src="js/dataaset.js"></script>
+        <script src="js/dataedit.js"></script>
         <script src="js/print.js"></script>
     </body>
 </html>

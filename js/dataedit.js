@@ -21,6 +21,10 @@ function editData(message){
             $('#viewstate').val(obj.STATE);
             $('#viewnumber').val(obj.EMAIL);
             $('#viewmobile').val(obj.MOBILENUMBER);
+            var imgedit = document.createElement('img');
+            imgedit.src="aassets/uploadedfile/"+obj.FILEUPLOAD;
+            imgedit.className="setclass";
+            $(imgedit).appendTo('#editimg');
         }
     });
 }
