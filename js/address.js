@@ -38,14 +38,15 @@ function validateuname(uname){
 }
 
 function validatepswd(pswd){
-    if(pswd.value==""){
-        errorValidate('pswd_error');
-        pswd.style.border="1px solid red";  
-        return false;
-    }else{
+    var passw=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+    if(pswd.value.match(passw)){
         successValidate('pswd_error');
         pswd.style.border="1px solid green";
         return true;
+    }else{
+        errorValidate('pswd_error');
+        pswd.style.border="1px solid red";  
+        return false;
     }
 }
 
@@ -62,22 +63,24 @@ function validatefname(fname){
 }
 
 function validatemail(mail){
-    if(mail.value==""){
-        errorValidate('mail_error');
-        mail.style.border="1px solid red";  
-        return false;
-    }else{
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(mail.value.match(mailformat)){
         successValidate('mail_error');
         mail.style.border="1px solid green";
         return true;
+    }else{
+        errorValidate('mail_error'); 
+        mail.style.border="1px solid red"; 
+        return false;
     }
 }
 
 function validateconpswd(conpswd){
-    if(conpswd.value==""){
-        errorValidate('conpswd_error');
-        conpswd.style.border="1px solid red";  
-        return false;
+    var passw=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+    if(conpswd.value.match(passw)){
+        successValidate('conpswd_error');
+        conpswd.style.border="1px solid green";
+        return true;
     }
     else if(conpswd.value != pswd.value){
         errorValidate('conform');
@@ -85,8 +88,8 @@ function validateconpswd(conpswd){
         return false;
     }
     else{
-        successValidate('conpswd_error');
-        conpswd.style.border="1px solid green";
-        return true;
+        errorValidate('conpswd_error');
+        conpswd.style.border="1px solid red";  
+        return false;
     }
 }

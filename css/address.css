@@ -19,6 +19,7 @@ body{
 .header{
     background-color: #0088cc;
     position: relative;
+    justify-content: space-between
 }
 
 .header-left{
@@ -356,6 +357,7 @@ body{
 
 .edit:hover{
     background-color: #0088cc;
+    color: white;
 }
 
 .editclose{
@@ -413,6 +415,7 @@ body{
 
 .userImg{
     padding-left: 30px;
+    cursor: pointer;
 }
 
 .display{

@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/addressbook.css"> 
+        <link rel="stylesheet" href="css/address.css"> 
     </head>
     <body>
         <cfoutput>
@@ -15,7 +15,7 @@
                     </div>
                     <div class="form_login">
                         <p class="logintext">REGISTER</p>
-                        <form action="" method="post" name="myform" onsubmit="return validateform()">
+                        <form action="login.cfm" method="post" name="myform" onsubmit="return validateform()">
                             <input type="hidden" name="fname_cfformrequired" value="You must enter a Fullname.">
                             <input type="hidden" name="mail_cfformrequired" value="You must enter a MailId.">
                             <input type="hidden" name="uname_cfformrequired" value="You must enter a Username.">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <script src="js/addressbook.js"></script>
+            <script src="js/address.js"></script>
         </cfoutput>
     </body>
 </html>

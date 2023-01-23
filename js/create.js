@@ -65,7 +65,7 @@ function validatefirst(first){
 }
 
 function validatelast(last){
-    var lettersonly = /[A-Za-z]+$/;
+    var lettersonly = /^[A-Za-z]+$/;
     if(last.value.match(lettersonly)){
         successValidate('last_error');
         last.style.border="1px solid white";
@@ -188,16 +188,3 @@ function validatemobile(mobile){
         return false;
     }
 }
-
-/* validateGmail(number){
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(email.value.match(mailformat)){
-        alert("Valid email address!");
-        document.createForm.createnumber.focus();
-        return true;
-    }else{
-        alert("You have entered an invalid email address!");
-        document.createForm.createnumber.focus();
-        return false;
-    }
-} */

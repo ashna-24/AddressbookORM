@@ -11,7 +11,6 @@ function updateData(message){
             lastname: $('#viewlast').val(),
             gender: $('#viewgender').val(),
             dob: $('#viewdate').val(),
-            file: $('#viewfile').val(),
             address: $('#viewaddress').val(),
             street: $('#viewstreet').val(),
             city: $('#viewcity').val(),
@@ -21,7 +20,6 @@ function updateData(message){
             datatype: 'json'
         },
         success: function(){
-            console.log(data)
             alert("Successfully updated");
         }
     })

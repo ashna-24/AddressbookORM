@@ -9,7 +9,7 @@
 
     <cffunction  name="getinsert" access="remote" returnType="array">
         <cfset ORMReload()>
-        <cfset tableQuery= entityLoad('createDtls')>
-        <cfreturn tableQuery>
+        <cfset local.tableQuery= entityLoad('createDtls')>
+        <cfreturn local.tableQuery>
     </cffunction>
 </cfcomponent>

@@ -8,19 +8,18 @@ create  table logindata(FullName varchar(30),
 
 select * from logindata;
 
-create table createDtls(ID int IDENTITY(1, 1) PRIMARY KEY, 
+create table createDtls(ID int IDENTITY(101, 1) PRIMARY KEY, 
 						Title varchar(10),
 						FirstName varchar(20),
 						LastName varchar(20),
 						Gender varchar(10),
 						DateOfBirth varchar(20),
 						FileUpload varchar(100),
-						Address varchar(20),
-						Street varchar(20),
-						City varchar(20),
-						State varchar(30),
-						Email varchar(30),
+						Address varchar(50),
+						Street varchar(50),
+						City varchar(50),
+						State varchar(40),
+						Email varchar(40),
 						MobileNumber varchar(10));
-						 
-drop table createDtls
+
 select * from createDtls

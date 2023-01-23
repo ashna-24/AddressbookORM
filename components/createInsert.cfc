@@ -21,7 +21,6 @@
             FROM createDtls
             WHERE Email = <cfqueryparam value="#arguments.number#" cfsqltype="cf_sql_varchar">
         </cfquery>
-
         <cfif validate.recordcount eq 0>
             <cfquery name="contact">
                 INSERT INTO createDtls(Title,FirstName,LastName,Gender,DateOfBirth,FileUpload,Address,Street,City,State,Email,MobileNumber)
